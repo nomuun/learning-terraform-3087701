@@ -3,7 +3,7 @@ data "aws_ami" "app_ami" {
 
   filter {
     name   = "name"
-    values = ["*tomcat*"]
+    values = ["bitnami-tomcat-*-x86_64-hvm-ebs-nami"]
   }
 
   filter {
@@ -11,7 +11,7 @@ data "aws_ami" "app_ami" {
     values = ["hvm"]
   }
 
-  # owners constraint removed so Terraform searches public AMIs matching the name filter
+  owners = ["004501492015"] # Bitnami
 }
 
 resource "aws_instance" "web" {
